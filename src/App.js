@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import './App.css';
 
 function App() {
     const [movies, setMovies] = useState([])
     console.log(movies)
 
+    let search = 'war'
+
     function fetchData() {
-        fetch('http://www.omdbapi.com/?i=tt3896198&apikey=c45d5077')
+        fetch(`http://www.omdbapi.com/?s=${search}&apikey=${process.env.REACT_APP_APIKEY}`)
             .then(response => response.json())
             .then(data => setMovies(data));
     };
